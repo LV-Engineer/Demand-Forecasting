@@ -2,7 +2,7 @@
 
 - [x] 1. Choose dataset and subset, define business problem and cost assumptions
 - [x] 2. Load data into PostgreSQL, build the subset view with joins
-- [ ] 3. EDA: trend, seasonality, holidays, gaps, outliers
+- [x] 3. EDA: trend, seasonality, holidays, gaps, outliers
 - [ ] 4. Baselines: naive and seasonal naive
 - [ ] 5. Feature engineering: lags, rolling statistics, calendar
 - [ ] 6. XGBoost with walk-forward validation
