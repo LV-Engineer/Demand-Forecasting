@@ -19,7 +19,7 @@
 |---|---|
 | Language | Python 3.13 |
 | Data and EDA | pandas, NumPy, Matplotlib, Seaborn |
-| SQL | PostgreSQL (load data, aggregate with window functions and joins) |
+| SQL | PostgreSQL (load data, build the subset view with joins) |
 | Classical ML | scikit-learn, XGBoost (lag and calendar features) |
 | Neural network | PyTorch: RNN and LSTM (sequence windows) |
 | Validation | TimeSeriesSplit / walk-forward |
