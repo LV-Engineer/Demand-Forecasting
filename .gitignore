@@ -1,5 +1,6 @@
 # Data
-data/
+data/*
+!data/README.md
 
 # Secrets and local config
 .env
@@ -11,3 +12,4 @@ data/
 
 # Virtual environments
 .venv
+__pycache__/
