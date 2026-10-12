@@ -1,23 +1,23 @@
 # Project 2: Demand Forecasting (Time Series)
 
-**Repo:** [GitHub link]
+**Repo:** https://github.com/LV-Engineer/Demand-Forecasting
 
 ## Business problem
-- **Who has the problem:** [e.g. retail store / warehouse planner]
-- **Why it matters:** [stock-outs lose sales, overstock ties up money]
-- **Decision the model supports:** [how much to order for the next 2-4 weeks]
+- **Who has the problem:** a supermarket chain's replenishment planner (Corporación Favorita, Ecuador).
+- **Why it matters:** stock-outs lose sales, overstock ties up money and spoils (food, produce).
+- **Decision the model supports:** how much to order for each store and product family for the next 28 days.
 
 ## Data
-- **Source:** [Favorita Store Sales / M5, link]
-- **Subset used:** [stores, products, date range]
-- **Target:** [daily/weekly sales]
-- **Key features:** [lags, rolling means, calendar, promotions, holidays]
-- **Data issues:** [gaps, zeros, outliers, leakage through future features]
+- **Source:** Favorita Store Sales, Kaggle competition: https://www.kaggle.com/competitions/store-sales-time-series-forecasting/data
+- **Subset used:** 5 stores (44, 3, 51, 11, 24: types A, B, D; Quito, Guayaquil, Cayambe) x 5 families (GROCERY I, BEVERAGES, PRODUCE, CLEANING, DAIRY) = 25 series, 2015-08-16 to 2017-08-15 (730 days, 18,250 rows).
+- **Target:** daily `sales` per store and family.
+- **Key features:** lags, rolling means, calendar, `onpromotion`, holidays, oil price.
+- **Data issues:** Dec 25 is missing, the April 2016 earthquake, oil price gaps on weekends, `transactions` is not known in the future (leakage, EDA only).
 
 ## Tech stack
 | Area | Tools |
 |---|---|
-| Language | Python 3.11+ |
+| Language | Python 3.13 |
 | Data and EDA | pandas, NumPy, Matplotlib, Seaborn |
 | SQL | PostgreSQL (load data, aggregate with window functions and joins) |
 | Classical ML | scikit-learn, XGBoost (lag and calendar features) |
@@ -31,8 +31,10 @@
 - **Baselines:** [naive, seasonal naive]
 - **Classical ML:** [XGBoost with lag/rolling features]
 - **Neural networks:** [RNN, LSTM: window length, hidden size, regularization, early stopping]
-- **Validation:** [walk-forward, no random split]
+- **Validation:** walk-forward, no random split; the last 28 days are a hold-out until the final comparison.
 - **Metrics:** [MAE, RMSE, WAPE] and why
+- **Forecast horizon:** 28 days.
+- **Cost assumptions (units, no prices in Favorita):** under-forecast cost = 3, over-forecast cost = 1 per unit; sensitivity analysis from 1 to 5.
 - **Comparison:** [do RNN/LSTM beat the baselines and XGBoost? at what cost?]
 
 ## Results
