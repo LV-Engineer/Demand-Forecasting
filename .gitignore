@@ -1,0 +1,13 @@
+# Data
+data/
+
+# Secrets and local config
+.env
+
+# Notebooks and models
+.ipynb_checkpoints/
+*.pt
+*.pkl
+
+# Virtual environments
+.venv
