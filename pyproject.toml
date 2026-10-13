@@ -1,7 +1,7 @@
 [project]
 name = "demand-forecasting"
 version = "0.1.0"
-description = "Add your description here"
+description = "Demand forecasting on Favorita store sales: baselines, boosters and RNN/LSTM with walk-forward validation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
