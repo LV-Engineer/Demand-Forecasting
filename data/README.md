@@ -55,7 +55,8 @@ Checked by reading the files:
 - Stores: 44, 3, 51, 11, 24 (types A, B, D; Quito, Guayaquil, Cayambe).
 - Families: GROCERY I, BEVERAGES, PRODUCE, CLEANING, DAIRY.
 - Period: 2015-08-16 to 2017-08-15.
-- 25 series, 18,225 rows in `subset` (the rows for Dec 25 are missing).
+- 25 series, 731 days: 18,225 rows in the `subset` view; `clean()` adds the two missing Dec 25 days
+  (50 rows) and gives 18,275 rows.
 
 ## Target
 
@@ -68,7 +69,8 @@ Checked by reading the files:
 | Target | `sales` |
 | Identifiers, excluded | `id` |
 | Series keys | `store_nbr`, `family` |
-| Candidate features | `date` (calendar), `onpromotion`, store `city`, `state`, `type`, `cluster`, oil price `dcoilwtico`, holiday flags `holiday_national`, `holiday_regional`, `holiday_local`, `is_event` |
+| Features used | `date` (calendar), `onpromotion`, holiday flags `holiday_national`, `holiday_local`, `is_event`, series keys `store_nbr` and `family`; store attributes (`city`, `state`, `type`, `cluster`) follow from `store_nbr` and are not used separately |
+| Tested and removed | oil price `dcoilwtico` lagged by 28 days (a trending proxy for time, it hurt validation), payday flag (no effect), `holiday_regional` (always false in the subset) |
 | Leakage, EDA only | `transactions` (not known at forecast time) |
 
 Why these decisions:
@@ -78,6 +80,8 @@ Why these decisions:
 - Holidays with `transferred = True` are dropped, because the holiday was moved and the day was a normal one.
   The `Transfer` rows mark the real days off. `Work Day` rows are dropped. `Event` rows get a separate flag.
 - Regional holidays are matched to stores by `state`, local ones by `city`.
-- Oil price gaps are left as NULL in SQL and filled later (forward fill) in code.
+- Oil price gaps are left as NULL in SQL and filled by forward fill in `clean()`; the oil price is not used as a
+  feature in the final models.
 
-The roles above are a plan based on the checks listed in "Facts". They will be confirmed or changed in EDA.
+The roles above were confirmed in EDA and by ablation; see `docs/02_Experiment_Log.md` and
+`notebooks/05_models.ipynb`.
