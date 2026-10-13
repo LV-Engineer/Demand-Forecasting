@@ -33,7 +33,6 @@ def add_calendar(df: pd.DataFrame) -> pd.DataFrame:
     df["dayofweek"] = date.dayofweek
     df["day"] = date.day
     df["month"] = date.month
-    df["is_payday"] = (date.day == 15) | date.is_month_end
 
     christmas = pd.to_datetime(date.year.astype(str) + "-12-25")
     christmas = christmas.where(df.date <= christmas, christmas + pd.DateOffset(years=1))
@@ -51,22 +50,17 @@ def add_promotion(df: pd.DataFrame) -> pd.DataFrame:
     df["promo_rel"] = df.onpromotion / (usual + 1)
     return df
 
-def add_oil(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.sort_values(GROUP + ["date"]).copy()
-    df["oil_lag_28"] = df.dcoilwtico.groupby([df.store_nbr, df.family], observed=True).shift(HORIZON)
-    return df
-
 CATEGORICAL = ["store_nbr", "family"]
 LAG_COLS = [f"sales_lag_{lag}" for lag in LAGS]
 ROLL_COLS = [f"sales_roll_mean_{w}" for w in ROLL_WINDOWS] + ["sales_roll_std_28"]
-CALENDAR_COLS = ["dayofweek", "day", "month", "is_payday", "days_to_christmas"]
+CALENDAR_COLS = ["dayofweek", "day", "month", "days_to_christmas"]
 HOLIDAY_COLS = ["holiday_national", "holiday_local", "is_event"]
-PROMO_OIL_COLS = ["onpromotion", "promo_rel", "oil_lag_28"]
+PROMO_COLS = ["onpromotion", "promo_rel"]
 
-FEATURES = CATEGORICAL + LAG_COLS + ROLL_COLS + CALENDAR_COLS + HOLIDAY_COLS + PROMO_OIL_COLS
+FEATURES = CATEGORICAL + LAG_COLS + ROLL_COLS + CALENDAR_COLS + HOLIDAY_COLS + PROMO_COLS
 
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
-    for step in (add_lags, add_rolling, add_calendar, add_promotion, add_oil):
+    for step in (add_lags, add_rolling, add_calendar, add_promotion):
         df = step(df)
     return df.reset_index(drop=True)
 
