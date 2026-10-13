@@ -4,7 +4,7 @@
 - [x] 2. Load data into PostgreSQL, build the subset view with joins
 - [x] 3. EDA: trend, seasonality, holidays, gaps, outliers
 - [x] 4. Baselines: naive and seasonal naive
-- [ ] 5. Feature engineering: lags, rolling statistics, calendar
+- [x] 5. Feature engineering: lags, rolling statistics, calendar
 - [ ] 6. XGBoost with walk-forward validation
 - [ ] 7. PyTorch RNN and LSTM: sequence windows, scaling, early stopping
 - [ ] 8. Compare all models, check that improvement is significant
