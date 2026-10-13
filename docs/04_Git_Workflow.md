@@ -128,9 +128,9 @@ Rule: `amend`/`rebase` only for commits that are not pushed yet. After a push us
 
 ## 8. Checklist for a healthy history
 
-- [ ] more than 30 meaningful commits by the end of the project
-- [ ] each plan step visible as a branch/merge
-- [ ] commit messages follow the convention
-- [ ] no data, models or secrets in history
-- [ ] tags at the main milestones
-- [ ] the experiment log and the work plan are updated in commits alongside the code
+- [x] more than 30 meaningful commits by the end of the project
+- [x] each plan step visible as a branch/merge
+- [x] commit messages follow the convention
+- [x] no data, models or secrets in history
+- [x] tags at the main milestones
+- [x] the experiment log and the work plan are updated in commits alongside the code
