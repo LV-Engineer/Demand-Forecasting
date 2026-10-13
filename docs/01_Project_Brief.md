@@ -20,7 +20,7 @@
 | Language | Python 3.13 |
 | Data and EDA | pandas, NumPy, Matplotlib, Seaborn |
 | SQL | PostgreSQL (load data, build the subset view with joins) |
-| Classical ML | scikit-learn, XGBoost (lag and calendar features) |
+| Classical ML | scikit-learn (Ridge), XGBoost, LightGBM (lag and calendar features) |
 | Neural network | PyTorch: RNN and LSTM (sequence windows) |
 | Validation | TimeSeriesSplit / walk-forward |
 | Statistics | significance check of improvement over baseline |
@@ -29,13 +29,13 @@
 
 ## Approach
 - **Baselines:** [naive, seasonal naive]
-- **Classical ML:** [XGBoost with lag/rolling features]
+- **Classical ML:** [Ridge as a linear model, XGBoost and LightGBM with lag/rolling features]
 - **Neural networks:** [RNN, LSTM: window length, hidden size, regularization, early stopping]
 - **Validation:** walk-forward, no random split; the last 28 days are a hold-out until the final comparison.
 - **Metrics:** [MAE, RMSE, WAPE] and why
 - **Forecast horizon:** 28 days.
 - **Cost assumptions (units, no prices in Favorita):** under-forecast cost = 3, over-forecast cost = 1 per unit; sensitivity analysis from 1 to 5.
-- **Comparison:** [do RNN/LSTM beat the baselines and XGBoost? at what cost?]
+- **Comparison:** [do RNN/LSTM beat the baselines, Ridge, XGBoost and LightGBM? at what cost?]
 
 ## Results
 - **Best model vs baseline:** [metric values]
