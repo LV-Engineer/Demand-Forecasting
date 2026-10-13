@@ -6,7 +6,7 @@
 - [x] 4. Baselines: naive and seasonal naive
 - [x] 5. Feature engineering: lags, rolling statistics, calendar
 - [x] 6. Ridge, XGBoost and LightGBM with walk-forward validation
-- [ ] 7. PyTorch RNN and LSTM: sequence windows, scaling, early stopping
+- [x] 7. PyTorch RNN and LSTM: sequence windows, scaling, early stopping
 - [ ] 8. Compare all models, check that improvement is significant
 - [ ] 9. Simulate business effect with stated assumptions
 - [ ] 10. Clean notebook, README with the 5-part structure, requirements, seeds
