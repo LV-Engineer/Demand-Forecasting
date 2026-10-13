@@ -7,6 +7,6 @@
 - [x] 5. Feature engineering: lags, rolling statistics, calendar
 - [x] 6. Ridge, XGBoost and LightGBM with walk-forward validation
 - [x] 7. PyTorch RNN and LSTM: sequence windows, scaling, early stopping
-- [ ] 8. Compare all models, check that improvement is significant
+- [x] 8. Compare all models, check that improvement is significant
 - [ ] 9. Simulate business effect with stated assumptions
 - [ ] 10. Clean notebook, README with the 5-part structure, requirements, seeds
