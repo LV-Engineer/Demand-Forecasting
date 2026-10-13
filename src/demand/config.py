@@ -4,6 +4,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw"
 PROCESSED = ROOT / "data" / "processed"
 MODELS = ROOT / "models"
+FIGURES = ROOT / "reports" / "figures"
 
 SEED = 42
 HORIZON = 28
