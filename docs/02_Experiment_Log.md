@@ -19,3 +19,5 @@ One row per experiment. Same walk-forward splits everywhere.
 | 13 | LSTM | same as RNN | same | 616.6 | 1030.9 | 0.125 | same WAPE as RNN, gates do not help; fold results vary a lot (WAPE 0.093 to 0.156); single seed |
 | 14 | RNN, 3 seeds | same as row 12, mean of seeds 42, 1, 2 | same | 602.6 | 1041.5 | 0.123 | WAPE per seed 0.121-0.125, stable; still behind XGBoost scaled (0.105) |
 | 15 | LSTM, 3 seeds | same as row 13, mean of seeds 42, 1, 2 | same | 607.8 | 1014.4 | 0.123 | WAPE per seed 0.122-0.125; RMSE about 3% below RNN, no gain on WAPE |
+| 16 | XGBoost, scaled target, hold-out | final model trained on the full training part, hold-out 2017-07-19 to 2017-08-15 (28 days, used once) | hold-out | 405.4 | 679.9 | 0.091 | 23% below seasonal median on the same days (0.118), consistent with walk-forward (0.105, 25%); same model order as in walk-forward |
+| 17 | seasonal median, hold-out | same hold-out | hold-out | 526.5 | 899.2 | 0.118 | reference for row 16; whole month is easier than the average fold for every model |
